@@ -1,8 +1,7 @@
 <template>
   <div>
-    <main>
-      <h3 class="h3">JSON格式化</h3>
-      <hr />
+    <main class="p1">
+      <h3>JSON格式化</h3>
       <el-input
         type="textarea"
         :rows="10"
@@ -10,12 +9,14 @@
         placeholder="需要格式化的JSON"
         v-model="inputValue"
       ></el-input>
-      <el-button @click="run">格式化↓</el-button>
+      <div class="my-1">
+        <el-button @click="run">格式化 ↓</el-button>
+      </div>
       <el-input
         type="textarea"
         :cols="30"
+        :rows="20"
         placeholder="格式化后的JSON"
-        autosize
         v-model="outputValue"
       ></el-input>
     </main>

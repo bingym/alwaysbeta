@@ -21,6 +21,21 @@ export default new Router({
       component: require('@/views/dev/JsonFormat.vue').default
     },
     {
+      path: '/dev/uuid',
+      name: 'uuid',
+      component: require('@/views/dev/Uuid.vue').default
+    },
+    {
+      path: '/dev/byte-calc',
+      name: 'uuid',
+      component: require('@/views/dev/ByteCalc.vue').default
+    },
+    {
+      path: '/dev/char-calc',
+      name: 'uuid',
+      component: require('@/views/dev/CharCalc.vue').default
+    },
+    {
       path: '/sys-info/basic',
       name: 'sysInfoBasic',
       component: require('@/views/sysInfo/Basic.vue').default

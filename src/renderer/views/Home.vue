@@ -1,8 +1,6 @@
 <template>
   <div>
     <main>
-      <h3>hello</h3>
-      <router-link to="/dev">Dev</router-link>
     </main>
   </div>
 </template>

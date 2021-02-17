@@ -10,6 +10,9 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="/dev/json-format">JSON格式化</el-menu-item>
+              <el-menu-item index="/dev/uuid">UUID</el-menu-item>
+              <el-menu-item index="/dev/char-calc">字符统计</el-menu-item>
+              <el-menu-item index="/dev/byte-calc">字节统计</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="/sys-info">
@@ -51,8 +54,14 @@ body {
 .mt-1 {
   margin-top: 1rem;
 }
-.mt-0{
+.my-1 {
+  margin: 1rem 0 1rem 0;
+}
+.mt-0 {
   margin-top: 0;
+}
+.mb-0{
+  margin-bottom: 0;
 }
 .mb-2 {
   margin-bottom: 2rem;
@@ -60,8 +69,17 @@ body {
 .mb-1 {
   margin-bottom: 1rem;
 }
-.p1{
+.ml-1{
+  margin-left: 1rem;
+}
+.mr-1{
+  margin-right: 1rem;
+}
+.p1 {
   padding: 1rem;
+}
+.d-flex{
+  display: flex;
 }
 /* CSS */
 </style>
