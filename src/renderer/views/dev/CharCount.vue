@@ -13,7 +13,7 @@
 </template>
 <script>
 export default {
-  name: "CharCalc",
+  name: "CharCount",
   data() {
     return {
       val: "",

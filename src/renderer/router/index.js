@@ -27,13 +27,23 @@ export default new Router({
     },
     {
       path: '/dev/byte-calc',
-      name: 'uuid',
+      name: 'byteCalc',
       component: require('@/views/dev/ByteCalc.vue').default
     },
     {
-      path: '/dev/char-calc',
-      name: 'uuid',
-      component: require('@/views/dev/CharCalc.vue').default
+      path: '/dev/url-encode-decode',
+      name: 'urlEncodeDecode',
+      component: require('@/views/dev/UrlEncodeDecode.vue').default
+    },
+    {
+      path: '/dev/byte-count',
+      name: 'byteCount',
+      component: require('@/views/dev/ByteCount.vue').default
+    },
+    {
+      path: '/dev/char-count',
+      name: 'charCount',
+      component: require('@/views/dev/CharCount.vue').default
     },
     {
       path: '/sys-info/basic',

@@ -10,9 +10,11 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="/dev/json-format">JSON格式化</el-menu-item>
+              <el-menu-item index="/dev/byte-calc">字节计算器</el-menu-item>
               <el-menu-item index="/dev/uuid">UUID</el-menu-item>
-              <el-menu-item index="/dev/char-calc">字符统计</el-menu-item>
-              <el-menu-item index="/dev/byte-calc">字节统计</el-menu-item>
+              <el-menu-item index="/dev/url-encode-decode">URL编解码</el-menu-item>
+              <el-menu-item index="/dev/char-count">字符统计</el-menu-item>
+              <el-menu-item index="/dev/byte-count">字节统计</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="/sys-info">
