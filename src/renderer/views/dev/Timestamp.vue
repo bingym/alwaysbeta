@@ -3,13 +3,13 @@
     <main class="p1">
       <h3>时间戳</h3>
       <el-card>
-        <h4>当前时间</h4>
+        <h4 class="mt-0">当前时间</h4>
         <p>当前时间: {{ currentTime }}</p>
         <p>当前时间戳(秒): {{ currentTimeSecond }}</p>
         <p>当前时间戳(毫秒): {{ currentTimeMS }}</p>
       </el-card>
       <el-card class="mt-1">
-        <h4>时间戳转时间</h4>
+        <h4 class="mt-0">时间戳转时间</h4>
         <div>
           <el-input v-model="timestampStr" placeholder="输入时间戳"></el-input>
         </div>
