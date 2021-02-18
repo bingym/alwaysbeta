@@ -21,6 +21,26 @@ export default new Router({
       component: require('@/views/dev/JsonFormat.vue').default
     },
     {
+      path: '/dev/timestamp',
+      name: 'timestamp',
+      component: require('@/views/dev/Timestamp.vue').default
+    },
+    {
+      path: '/dev/md5',
+      name: 'md5',
+      component: require('@/views/dev/Md5.vue').default
+    },
+    {
+      path: '/dev/b64',
+      name: 'b64',
+      component: require('@/views/dev/B64.vue').default
+    },
+    {
+      path: '/dev/unicode-zh',
+      name: 'unicodeZh',
+      component: require('@/views/dev/UnicodeZh.vue').default
+    },
+    {
       path: '/dev/uuid',
       name: 'uuid',
       component: require('@/views/dev/Uuid.vue').default

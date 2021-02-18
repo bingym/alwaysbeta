@@ -10,6 +10,10 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="/dev/json-format">JSON格式化</el-menu-item>
+              <el-menu-item index="/dev/timestamp">时间戳</el-menu-item>
+              <el-menu-item index="/dev/md5">MD5</el-menu-item>
+              <el-menu-item index="/dev/b64">Base64编解码</el-menu-item>
+              <el-menu-item index="/dev/unicode-zh">unicode/中文转换</el-menu-item>
               <el-menu-item index="/dev/byte-calc">字节计算器</el-menu-item>
               <el-menu-item index="/dev/uuid">UUID</el-menu-item>
               <el-menu-item index="/dev/url-encode-decode">URL编解码</el-menu-item>
@@ -82,6 +86,9 @@ body {
 }
 .d-flex{
   display: flex;
+}
+.d-hidden{
+  display: none;
 }
 /* CSS */
 </style>

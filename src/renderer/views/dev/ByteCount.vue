@@ -11,7 +11,7 @@
 </template>
 <script>
 export default {
-  name: "ByteCalc",
+  name: "ByteCount",
   data() {
     return {val:''};
   },
