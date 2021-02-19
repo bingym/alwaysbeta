@@ -28,7 +28,15 @@
             <el-menu-item-group>
               <el-menu-item index="/sys-info/basic">基础信息</el-menu-item>
               <el-menu-item index="/sys-info/monitor">资源监控</el-menu-item>
-              <el-menu-item index="/sys-info/process-manage">进程管理</el-menu-item>
+              <el-menu-item index="/sys-info/process-manage">进程信息</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+          <el-submenu index="/system-manage">
+            <template slot="title">
+              <span>系统管理</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/system-manage/find-file">文件查找</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -90,6 +98,9 @@ body {
 }
 .d-hidden{
   display: none;
+}
+.d-inline{
+  display: inline;
 }
 /* CSS */
 </style>

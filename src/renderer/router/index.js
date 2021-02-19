@@ -81,6 +81,11 @@ export default new Router({
       component: require('@/views/sysInfo/ProcessManage.vue').default
     },
     {
+      path: '/system-manage/find-file',
+      name: 'systemManageFindFile',
+      component: require('@/views/systemManage/FindFile.vue').default
+    },
+    {
       path: '*',
       redirect: '/'
     }
