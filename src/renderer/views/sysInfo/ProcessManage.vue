@@ -4,9 +4,10 @@
       <h3>进程管理</h3>
       <el-card class="mt-1" v-loading="showLoading">
         <h3 class="mt-0">进程</h3>
-        <div class="search">
-          <el-input placeholder="进程名" v-model="cond.name" @keyup.enter.native="filterList"></el-input>
-          <div class="mt-1">
+        <div class="search d-flex">
+          <el-input placeholder="进程名" v-model="cond.name"></el-input>
+          <el-input placeholder="PID" v-model="cond.pid" class="ml-1"></el-input>
+          <div class="ml-1">
             <el-button @click="filterList">过滤</el-button>
           </div>
         </div>
@@ -93,6 +94,7 @@ export default {
       processList: [],
       cond: {
         name: "",
+        pid: null,
       },
       showLoading: false,
     };
@@ -104,6 +106,7 @@ export default {
       let wp = childProcess.exec(cmd);
       const processList = [];
       const pName = this.cond.name.toLowerCase();
+      const pPid = this.cond.pid;
       wp.stdout.on("data", (data) => {
         const processListBuff = data.split("\n").slice(1);
         processListBuff.forEach((element) => {
@@ -124,8 +127,9 @@ export default {
           let command = rest.join(" ");
           if (user) {
             if (
-              pName === "" ||
-              (pName !== "" && command.toLowerCase().includes(pName))
+              (pName === "" ||
+                (pName !== "" && command.toLowerCase().includes(pName))) &&
+              (!pPid || pPid === pid)
             ) {
               processList.push({
                 user,
