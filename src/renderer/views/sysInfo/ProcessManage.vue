@@ -5,8 +5,8 @@
       <el-card class="mt-1" v-loading="showLoading">
         <h3 class="mt-0">进程</h3>
         <div class="search d-flex">
-          <el-input placeholder="进程名" v-model="cond.name"></el-input>
-          <el-input placeholder="PID" v-model="cond.pid" class="ml-1"></el-input>
+          <el-input placeholder="进程名" v-model="cond.name" clearable></el-input>
+          <el-input placeholder="PID" v-model="cond.pid" class="ml-1" clearable></el-input>
           <div class="ml-1">
             <el-button @click="filterList">过滤</el-button>
           </div>
