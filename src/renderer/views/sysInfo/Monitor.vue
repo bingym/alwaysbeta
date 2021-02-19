@@ -33,6 +33,23 @@
           </el-table-column>
         </el-table>
       </el-card>
+      <el-card class="mt-1">
+        <h3>磁盘</h3>
+        <el-table :data="diskData" stripe border class="mt-1">
+          <el-table-column
+            label="FileSystem"
+            prop="filesystem"
+          ></el-table-column>
+          <el-table-column label="Size" prop="size"></el-table-column>
+          <el-table-column label="Used" prop="used"></el-table-column>
+          <el-table-column label="Avail" prop="avail"></el-table-column>
+          <el-table-column label="Use%" prop="_use"></el-table-column>
+          <el-table-column
+            label="Mounted on"
+            prop="mounted_on"
+          ></el-table-column>
+        </el-table>
+      </el-card>
     </main>
   </div>
 </template>
@@ -49,11 +66,14 @@ export default {
       loadAvg: [0, 0, 0],
       memData: [],
       mData: [{ total: 100 }, { total: 200 }],
+      diskData: [],
     };
   },
   methods: {
-    updateInfo() {
+    updateLoad() {
       this.loadAvg = os.loadavg();
+    },
+    updateMem() {
       const totalMem = os.totalmem() / 1024 / 1024;
       if (totalMem > 1024) {
         // 大于1G
@@ -67,7 +87,6 @@ export default {
       } else {
         this.freeMem = freeMem.toFixed(2) + "MB";
       }
-
       let wp = childProcess.exec("free -h");
       wp.stdout.on("data", (data) => {
         data = data.split("\n");
@@ -92,6 +111,24 @@ export default {
         });
         this.memData = memData;
       });
+    },
+    updateDisk() {
+      const diskData = [];
+      const wp = childProcess.exec("df -h");
+      wp.stdout.on("data", (data) => {
+        data = data.split("\n").slice(1, -1);
+        data.forEach((ele) => {
+          const line = ele.split(/\s+/);
+          const [filesystem, size, used, avail, _use, mounted_on] = line;
+          diskData.push({filesystem, size, used, avail, _use, mounted_on});
+        });
+      });
+      this.diskData = diskData;
+    },
+    updateInfo() {
+      this.updateLoad();
+      this.updateMem();
+      this.updateDisk();
     },
   },
   mounted() {

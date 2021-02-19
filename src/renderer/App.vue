@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-row>
-      <el-col :span="3">
+      <el-col :md="{span:4}" :lg="{span:3}">
         <el-menu default-active="2" router>
           <el-menu-item index="/">首页</el-menu-item>
           <el-submenu index="dev">
@@ -33,7 +33,7 @@
           </el-submenu>
         </el-menu>
       </el-col>
-      <el-col :span="21">
+      <el-col :md="{span:20}" :lg="{span:21}">
         <router-view></router-view>
       </el-col>
     </el-row>

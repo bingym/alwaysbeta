@@ -56,7 +56,6 @@
               >
                 <div
                   style="
-                    background: #ccc;
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     overflow: hidden;
