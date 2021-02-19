@@ -1,7 +1,7 @@
 <template>
   <div>
     <main class="p1">
-      <h3>文件查找</h3>
+      <h3>文件管理</h3>
       <div class="d-flex">
         <el-input placeholder="路径" v-model="cond.path"></el-input>
         <el-input
@@ -13,7 +13,7 @@
           <el-button @click="find">查找</el-button>
         </div>
       </div>
-      <el-table :data="fileList" stripe border>
+      <el-table :data="fileList" stripe border class="mt-1">
         <el-table-column prop="filePath" label="path"></el-table-column>
       </el-table>
     </main>
@@ -22,7 +22,7 @@
 <script>
 const childProcess = require("child_process");
 export default {
-  name: "FindFile",
+  name: "FileManage",
   data() {
     return {
       cond: {

@@ -66,29 +66,29 @@ export default new Router({
       component: require('@/views/dev/CharCount.vue').default
     },
     {
-      path: '/sys-info/basic',
-      name: 'sysInfoBasic',
-      component: require('@/views/sysInfo/Basic.vue').default
+      path: '/system-manage/basic',
+      name: 'sysManageBasic',
+      component: require('@/views/systemManage/Basic.vue').default
     },
     {
-      path: '/sys-info/monitor',
-      name: 'sysInfoMonitor',
-      component: require('@/views/sysInfo/Monitor.vue').default
+      path: '/system-manage/monitor',
+      name: 'sysManageMonitor',
+      component: require('@/views/systemManage/Monitor.vue').default
     },
     {
-      path: '/sys-info/process-manage',
-      name: 'sysInfoManage',
-      component: require('@/views/sysInfo/ProcessManage.vue').default
+      path: '/system-manage/process-manage',
+      name: 'sysManageProcessManage',
+      component: require('@/views/systemManage/ProcessManage.vue').default
     },
     {
-      path: '/sys-info/env_',
-      name: 'sysInfoEnv',
-      component: require('@/views/sysInfo/Env_.vue').default
+      path: '/system-manage/env_',
+      name: 'sysManageEnv',
+      component: require('@/views/systemManage/Env_.vue').default
     },
     {
-      path: '/system-manage/find-file',
+      path: '/system-manage/file-manage',
       name: 'systemManageFindFile',
-      component: require('@/views/systemManage/FindFile.vue').default
+      component: require('@/views/systemManage/FileManage.vue').default
     },
     {
       path: '*',
