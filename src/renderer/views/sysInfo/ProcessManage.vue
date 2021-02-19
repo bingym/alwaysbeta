@@ -100,10 +100,10 @@ export default {
   },
   methods: {
     updateInfo() {
+      this.processList = []
       const commandArray = ["ps", "aux"];
       const cmd = commandArray.join(" ");
       let wp = childProcess.exec(cmd);
-      const processList = [];
       const pName = this.cond.name.toLowerCase();
       const pPid = this.cond.pid;
       wp.stdout.on("data", (data) => {
@@ -130,7 +130,7 @@ export default {
                 (pName !== "" && command.toLowerCase().includes(pName))) &&
               (!pPid || pPid === pid)
             ) {
-              processList.push({
+              this.processList.push({
                 user,
                 pid,
                 cpu,
@@ -147,7 +147,6 @@ export default {
           }
         });
       });
-      this.processList = processList;
     },
     filterList() {
       this.updateInfo();

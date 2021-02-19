@@ -36,8 +36,12 @@
         </el-col>
         <el-col :sm="6" :md="4" class="mt-1">
           <el-card
-            >当前用户名:
-            <el-tag type="success">{{ who }}</el-tag></el-card
+            >当前用户名: <el-tag type="success">{{ who }}</el-tag></el-card
+          >
+        </el-col>
+        <el-col :sm="6" :md="4" class="mt-1">
+          <el-card
+            >当前Shell: <el-tag type="success">{{ shellPath }}</el-tag></el-card
           >
         </el-col>
         <el-col :span="24" class="mt-1">
@@ -83,7 +87,8 @@ export default {
       networks: [],
       lsb_release: "",
       uname: "",
-      who:''
+      who: "",
+      shellPath: "",
     };
   },
   methods: {},
@@ -103,10 +108,13 @@ export default {
     unameWp.stdout.on("data", (data) => {
       this.uname = data;
     });
-    const whoWp = childProcess.exec('who')
-    whoWp.stdout.on('data', data=>{
-      this.who =data.split(/\s+/)[0]
-    })
+    const whoWp = childProcess.exec("who");
+    whoWp.stdout.on("data", (data) => {
+      this.who = data.split(/\s+/)[0];
+    });
+    childProcess.exec("echo $SHELL", (err, stdout, stderr) => {
+      this.shellPath = stdout;
+    });
   },
 };
 </script>

@@ -81,6 +81,11 @@ export default new Router({
       component: require('@/views/sysInfo/ProcessManage.vue').default
     },
     {
+      path: '/sys-info/env_',
+      name: 'sysInfoEnv',
+      component: require('@/views/sysInfo/Env_.vue').default
+    },
+    {
       path: '/system-manage/find-file',
       name: 'systemManageFindFile',
       component: require('@/views/systemManage/FindFile.vue').default

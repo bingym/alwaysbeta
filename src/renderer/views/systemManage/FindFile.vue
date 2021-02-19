@@ -13,7 +13,7 @@
           <el-button @click="find">查找</el-button>
         </div>
       </div>
-      <el-table :data="fileList" stripe>
+      <el-table :data="fileList" stripe border>
         <el-table-column prop="filePath" label="path"></el-table-column>
       </el-table>
     </main>
