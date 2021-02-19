@@ -40,6 +40,7 @@
 const childProcess = require("child_process");
 const os = require("os");
 const pathLib = require("path");
+const fs = require("fs");
 export default {
   name: "FileManage",
   data() {
@@ -47,31 +48,49 @@ export default {
       cName: "",
       cPath: "",
       fileList: [],
+      findMode: false,
     };
   },
   methods: {
+    extractLlLine(eleArray) {
+      const [property, inode, user, group, filesize, ...rest] = eleArray;
+      return {
+        property,
+        inode,
+        user,
+        group,
+        filesize,
+        update_at: rest.slice(0, -1).join(" "),
+        filename: rest.slice(-1)[0],
+      };
+    },
     find() {
-      this.fileList = [];
       if (this.cName && this.cPath) {
+        this.fileList = [];
         const findWp = childProcess.exec(
-          `find ${this.cPath} -name '${this.cName}'`
+          `find ${this.cPath} -name '${this.cName}' -ls`
         );
         findWp.stdout.on("data", (data) => {
-          data = data.split("\n");
+          data = data.split("\n").slice(0, -1);
           data.forEach((ele) => {
-            this.fileList.push({
-              filePath: ele,
-            });
+            const eleArray = ele.trim().split(/\s+/).slice(2);
+            this.fileList.push(this.extractLlLine(eleArray));
           });
         });
       }
     },
     onFileClick(row) {
       if (row.property.startsWith("d")) {
-        this.cPath = pathLib.join(this.cPath, row.filename);
+        this.cName = "";
+        if (pathLib.isAbsolute(row.filename)) {
+          this.cPath = row.filename;
+        } else {
+          this.cPath = pathLib.join(this.cPath, row.filename);
+        }
       }
     },
     backPath() {
+      this.cName = "";
       this.cPath = "/" + this.cPath.split("/").slice(1, -1).join("/");
     },
   },
@@ -81,19 +100,8 @@ export default {
       childProcess.exec(`ls -lh ${newValue}`, (err, stdout, stderr) => {
         const lines = stdout.split("\n").slice(1);
         lines.forEach((line) => {
-          const [property, inode, user, group, filesize, ...rest] = line.split(
-            /\s+/
-          );
-          if (property) {
-            this.fileList.push({
-              property,
-              inode,
-              user,
-              group,
-              filesize,
-              update_at: rest.slice(0, -1).join(" "),
-              filename: rest.slice(-1)[0],
-            });
+          if (line) {
+            this.fileList.push(this.extractLlLine(line.split(/\s+/)));
           }
         });
       });
