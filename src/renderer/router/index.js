@@ -76,6 +76,11 @@ export default new Router({
       component: require('@/views/sysInfo/Monitor.vue').default
     },
     {
+      path: '/sys-info/process-manage',
+      name: 'sysInfoManage',
+      component: require('@/views/sysInfo/ProcessManage.vue').default
+    },
+    {
       path: '*',
       redirect: '/'
     }

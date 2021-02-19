@@ -28,6 +28,7 @@
             <el-menu-item-group>
               <el-menu-item index="/sys-info/basic">基础信息</el-menu-item>
               <el-menu-item index="/sys-info/monitor">资源监控</el-menu-item>
+              <el-menu-item index="/sys-info/process-manage">进程管理</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>

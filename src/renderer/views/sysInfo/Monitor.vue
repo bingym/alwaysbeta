@@ -68,7 +68,7 @@ export default {
         this.freeMem = freeMem.toFixed(2) + "MB";
       }
 
-      const wp = childProcess.exec("free -mh");
+      let wp = childProcess.exec("free -h");
       wp.stdout.on("data", (data) => {
         data = data.split("\n");
         const memData = [];
