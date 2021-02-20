@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import {app, BrowserWindow, Menu} from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -22,8 +22,19 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     height: 563,
     useContentSize: true,
-    width: 1000
+    width: 1000,
+    autoHideMenuBar: false
   })
+  let template = [
+    {
+      label: '开发者工具',
+      click () {
+        mainWindow.openDevTools()
+      }
+    },
+  ]
+  let menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
 
   mainWindow.loadURL(winURL)
 
