@@ -91,7 +91,12 @@ export default new Router({
       component: require('@/views/systemManage/FileManage.vue').default
     },
     {
-      path: '/about',
+      path: '/hardware/cpu',
+      name: 'cpu',
+      component: require('@/views/hardware/Cpu.vue').default
+    },
+    {
+      path: '/help/about',
       name: 'about',
       component: require('@/views/help/About.vue').default
     },

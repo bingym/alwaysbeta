@@ -33,6 +33,14 @@
               <el-menu-item index="/system-manage/file-manage">文件管理</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
+          <el-submenu index="/hardware">
+            <template slot="title">
+              <span>硬件信息</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/hardware/cpu">CPU</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
         </el-menu>
       </el-col>
       <el-col :md="{span:20}" :lg="{span:21}">
