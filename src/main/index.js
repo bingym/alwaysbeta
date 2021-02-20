@@ -25,15 +25,25 @@ function createWindow () {
     width: 1000,
     autoHideMenuBar: false
   })
-  let template = [
+  const menu = Menu.buildFromTemplate([
     {
-      label: '开发者工具',
-      click () {
-        mainWindow.openDevTools()
-      }
+      label: '帮助',
+      submenu: [
+        {
+          label: '开发者工具',
+          click () {
+            mainWindow.openDevTools()
+          }
+        },
+        {
+          label: '关于',
+          click(){
+            mainWindow.webContents.send('goToRoute', {name:'about'})
+          }
+        }
+      ]
     },
-  ]
-  let menu = Menu.buildFromTemplate(template)
+  ])
   Menu.setApplicationMenu(menu)
 
   mainWindow.loadURL(winURL)

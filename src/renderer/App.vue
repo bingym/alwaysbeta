@@ -50,6 +50,11 @@ export default {
       items: [],
     };
   },
+  mounted(){
+    this.$electron.ipcRenderer.on('goToRoute', (event, arg)=>{
+      this.$router.push(arg)
+    })
+  }
 };
 </script>
 
