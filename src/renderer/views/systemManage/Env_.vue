@@ -2,61 +2,41 @@
   <div>
     <main class="p1">
       <h3>环境变量</h3>
-      <el-card v-for="(item, index) in env_" :key="index">
-        <h4>{{ item.tp }}</h4>
-        <el-table :data="item.data" stripe border>
-          <el-table-column prop="key" label="key"></el-table-column>
-          <el-table-column prop="value" label="value"></el-table-column>
-        </el-table>
-      </el-card>
+      <el-input placeholder="变量名" v-model="keyword"></el-input>
+      <el-table stripe border class="mt-1" :data="tableData">
+        <el-table-column prop="key" label="key"></el-table-column>
+        <el-table-column prop="value" label="value"></el-table-column>
+      </el-table>
     </main>
   </div>
 </template>
 <script>
-const childProcess = require("child_process");
 export default {
   name: "Env_",
   data() {
     return {
-      env_: [
-        {
-          tp: "Golang",
-          data: [
-            { key: "GOROOT", value: "" },
-            { key: "GOPATH", value: "" },
-            { key: "GOPROXY", value: "" },
-            { key: "GOPRIVATE", value: "" },
-          ],
-        },
-      ],
+      keyword: "",
     };
   },
-  methods: {
-    update() {
-      childProcess.exec("echo $GOROOT", (err, stdout, stderr) => {
-        this.env_[0].data[0].value = stdout;
-      });
-      childProcess.exec("echo $GOPATH", (err, stdout, stderr) => {
-        this.env_[0].data[1].value = stdout;
-      });
-      childProcess.exec("echo $GOPROXY", (err, stdout, stderr) => {
-        this.env_[0].data[2].value = stdout;
-      });
-      childProcess.exec("echo $GOPRIVATE", (err, stdout, stderr) => {
-        this.env_[0].data[3].value = stdout;
-      });
+  computed: {
+    tableData() {
+      const ret = [];
+      const keyword = this.keyword.toUpperCase();
+      for (const key in process.env) {
+        if ((keyword && key.includes(keyword)) || !keyword)
+          ret.push({
+            key,
+            value: process.env[key],
+          });
+      }
+      return ret;
     },
   },
+  methods: {},
   mounted() {
-    this.update();
+    
   },
 };
 </script>
 <style scoped>
-ul {
-  padding: 0;
-}
-li {
-  list-style-type: none;
-}
 </style>
